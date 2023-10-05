@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\BitacoraController;
+use App\Http\Controllers\EquipoController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,9 +16,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('login');
-});
+// Route::get('/', function () {
+//     return view('login');
+// });
+
+Route::get('/',   [HomeController::class , 'index'] )->name('alarmas');
+
+Route::get('/equipos',   [EquipoController::class , 'index'] )->name('equipos');
+
+Route::get('/bitacoras',   [BitacoraController::class , 'index'] )->name('bitacoras');
+
+
+
 
 Route::get('/index', function () {
     return view('index');
