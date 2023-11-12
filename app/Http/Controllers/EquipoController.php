@@ -3,84 +3,82 @@
 namespace App\Http\Controllers;
 
 use App\Models\Equipo;
+use App\Models\Servicios;
 use Illuminate\Http\Request;
 
 class EquipoController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
        $equipos = Equipo::all();
-       return response()->json($equipos);
+
+       return view(
+        'equipos.index',
+        [
+            'equipos' => $equipos,
+        ]
+    );
+
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create()
     {
-        //
+        return view(
+            'equipos.create',
+        );
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request)
     {
-        //
+        $equipo = Equipo::create([
+            'nombre' => $request->get('name'),
+            'activo' => 1
+        ]);
+        return redirect('/equipos');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Equipo  $equipo
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Equipo $equipo)
+
+    public function show($id)
     {
-        //
+        $equipo = Equipo::find($id);
+        return view(
+            'equipos.show_servicios',
+            [
+                'equipo' => $equipo,
+            ]
+        );
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Equipo  $equipo
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Equipo $equipo)
+
+    public function edit($id)
     {
-        //
+        $equipo = Equipo::find($id);
+
+        return view(
+            'equipos.edit',
+            [
+                'equipo' => $equipo
+            ]
+        );
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Equipo  $equipo
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(Request $request, Equipo $equipo)
     {
-        //
+        $equipo->nombre = $request->get('name');
+        $equipo->activo = $request->has('activo');
+        $equipo->save();
+        return redirect('/equipos');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Equipo  $equipo
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Equipo $equipo)
+
+    public function destroy($id)
     {
-        //
+        $equipo = Equipo::where('id', $id)->first();
+        $equipo->delete();
+        return back();
     }
 }

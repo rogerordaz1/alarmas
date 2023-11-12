@@ -35,6 +35,9 @@ Route::resource('/users', UserController::class)->middleware(['auth'])
 Route::resource('/servicios', ServiciosController::class)->middleware(['auth'])
     ->names('servicios');
 
+Route::resource('/equipos', EquipoController::class)->middleware(['auth'])
+    ->names('equipos');
+
 
 
 

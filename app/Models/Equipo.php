@@ -9,6 +9,10 @@ class Equipo extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'nombre',
+        'activo'
+    ];
 
 
     public function servicios()
