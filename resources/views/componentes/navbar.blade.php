@@ -13,36 +13,31 @@
                     <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-speedometer') }} "></use>
                 </svg>Panel de Control</a>
         </li>
-        <li class="nav-item {{ request()->is('/alarmas') ? 'active' : '' }}"><a class="nav-link" href="{{ route('alarmas') }}">
+        <li class="nav-item {{ request()->is('/alarmas') ? 'active' : '' }}"><a class="nav-link"
+                href="{{ route('alarmas.index') }}">
                 <svg class="nav-icon">
                     <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-bell') }}"></use>
                 </svg>Alarmas</a></li>
-        <li class="nav-item"><a class="nav-link" href="index.html">
+
+      
+        <li class="nav-item {{ request()->is('/users') || request()->is('/users/*') ? 'active' : '' }}">
+            <a class="nav-link " href="{{ route('users.index') }}">
                 <svg class="nav-icon">
-                    <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-cog') }} "></use>
-                </svg>Configuracion</a></li>
-        <li class="nav-item"><a class="nav-link" href="index.html">
+                    <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-speedometer') }} "></use>
+                </svg>Gestion de Usuarios</a>
+        </li>
+        <li class="nav-item {{ request()->is('/servicios') || request()->is('/servicios/*') ? 'active' : '' }}">
+            <a class="nav-link " href="{{ route('servicios.index') }}">
                 <svg class="nav-icon">
-                    <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-blur') }} "></use>
-                </svg>Reportes</a></li>
-                <li class="nav-item {{ request()->is('/users') || request()->is('/users/*') ? 'active' : '' }}">
-                    <a class="nav-link " href="{{ route('users.index') }}">
-                        <svg class="nav-icon">
-                            <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-speedometer') }} "></use>
-                        </svg>Gestion de Usuarios</a>
-                </li>
-                <li class="nav-item {{ request()->is('/servicios') || request()->is('/servicios/*') ? 'active' : '' }}">
-                    <a class="nav-link " href="{{ route('servicios.index') }}">
-                        <svg class="nav-icon">
-                            <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-speedometer') }} "></use>
-                        </svg>Gestion de Servicios</a>
-                </li>
-                <li class="nav-item {{ request()->is('/equipos') || request()->is('/equipos/*') ? 'active' : '' }}">
-                    <a class="nav-link " href="{{ route('equipos.index') }}">
-                        <svg class="nav-icon">
-                            <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-speedometer') }}"></use>
-                        </svg>Gestion de Equipos</a>
-                </li>
+                    <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-speedometer') }} "></use>
+                </svg>Gestion de Servicios</a>
+        </li>
+        <li class="nav-item {{ request()->is('/equipos') || request()->is('/equipos/*') ? 'active' : '' }}">
+            <a class="nav-link " href="{{ route('equipos.index') }}">
+                <svg class="nav-icon">
+                    <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-speedometer') }}"></use>
+                </svg>Gestion de Equipos</a>
+        </li>
     </ul>
 
 </div>
