@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('body')
-
     @include('componentes.navbar')
 
     {{--  --}}
@@ -28,17 +27,17 @@
                             </div>
                             <div class="card-body row text-center">
                                 <div class="col">
-                                    <div class="fs-5 fw-semibold">85</div>
+                                    <div class="fs-5 fw-semibold">{{ $equiposUp }}</div>
                                     <div class="text-uppercase text-medium-emphasis small">UP</div>
                                 </div>
                                 <div class="vr"></div>
                                 <div class="col">
-                                    <div class="fs-5 fw-semibold">2</div>
+                                    <div class="fs-5 fw-semibold">{{ $equiposDowm }}</div>
                                     <div class="text-uppercase text-medium-emphasis small">ERROR</div>
                                 </div>
                                 <div class="vr"></div>
                                 <div class="col">
-                                    <div class="fs-5 fw-semibold">97.5</div>
+                                    <div class="fs-5 fw-semibold">{{ number_format($equiposUpPercent, 2) }}</div>
                                     <div class="text-uppercase text-medium-emphasis small">%</div>
                                 </div>
                             </div>
@@ -57,17 +56,17 @@
                             </div>
                             <div class="card-body row text-center">
                                 <div class="col">
-                                    <div class="fs-5 fw-semibold">104</div>
+                                    <div class="fs-5 fw-semibold">{{ $servicesCount }}</div>
                                     <div class="text-uppercase text-medium-emphasis small">services</div>
                                 </div>
                                 <div class="vr"></div>
                                 <div class="col">
-                                    <div class="fs-5 fw-semibold">1</div>
+                                    <div class="fs-5 fw-semibold">{{ $servicesDowm }}</div>
                                     <div class="text-uppercase text-medium-emphasis small">DOWN</div>
                                 </div>
                                 <div class="vr"></div>
                                 <div class="col">
-                                    <div class="fs-5 fw-semibold">97.1</div>
+                                    <div class="fs-5 fw-semibold">{{ number_format($upPercent, 2) }}</div>
                                     <div class="text-uppercase text-medium-emphasis small">%</div>
                                 </div>
                             </div>
@@ -106,6 +105,8 @@
                 </div>
 
                 <div class="table-responsive">
+
+
                     <table class="table border mb-0">
                         <thead class="table-light fw-semibold">
                             <tr class="align-middle">
@@ -127,37 +128,46 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr class="align-middle">
-                                <td class="text-center">
-                                    <div class="avatar avatar-md"><img class="avatar-img" src="assets/img/users.png"
-                                            alt="user@email.com"><span class="avatar-status bg-success"></span></div>
-                                </td>
-                                <td>
-                                    <div>Iran Rogriguez Moreno</div>
-                                    <div class="small text-medium-emphasis">
-                                        Administrador de Red</div>
-                                </td>
 
-                                <td>
-                                    <div class="clearfix">
-                                        <div class="float-start">
-                                            <div class="fw-semibold">100%</div>
+                            @foreach ($users as $index => $user)
+                                <tr class="align-middle">
+                                    <td class="text-center">
+                                        <div class="avatar avatar-md"><img class="avatar-img" src="assets/img/users.png"
+                                                alt="user@email.com"><span class="avatar-status bg-success"></span></div>
+                                    </td>
+                                    <td>
+                                        <div>{{ $user->name }}</div>
+                                        <div class="small text-medium-emphasis">
+                                            Administrador de Red</div>
+                                    </td>
+
+                                    <td>
+                                        <div class="clearfix">
+                                            <div class="float-start">
+                                                <div class="fw-semibold">100%</div>
+                                            </div>
+                                            <div class="float-end"></div>
                                         </div>
-                                        <div class="float-end"></div>
-                                    </div>
-                                    <div class="progress progress-thin">
-                                        <div class="progress-bar bg-success" role="progressbar" style="width: 1000%"
-                                            aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                </td>
-                                <td></td>
+                                        <div class="progress progress-thin">
+                                            <div class="progress-bar bg-success" role="progressbar" style="width: 1000%"
+                                                aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+                                    </td>
+                                    <td></td>
 
-                                <td>
-                                    <div class="small text-medium-emphasis">Tiempo de Respuesta</div>
-                                    <div class="fw-semibold">21.4 min</div>
-                                </td>
-                            </tr>
-                            <tr class="align-middle">
+                                    <td>
+                                        <div class="small text-medium-emphasis">Tiempo de Respuesta</div>
+                                        <div class="fw-semibold">
+
+                                            {{$resultados[$index]}} min
+                                        </div>
+                                    </td>
+                                </tr>
+                            @endforeach
+
+
+
+                            {{-- <tr class="align-middle">
                                 <td class="text-center">
                                     <div class="avatar avatar-md"><img class="avatar-img" src="assets/img/users.png"
                                             alt="user@email.com"><span class="avatar-status bg-danger"></span></div>
@@ -215,7 +225,7 @@
                                     <div class="fw-semibold">20.3 min</div>
                                 </td>
 
-                            </tr>
+                            </tr> --}}
                         </tbody>
 
                     </table>

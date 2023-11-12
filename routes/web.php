@@ -3,6 +3,8 @@
 use App\Http\Controllers\BitacoraController;
 use App\Http\Controllers\EquipoController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ServiciosController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,20 +22,28 @@ use Illuminate\Support\Facades\Route;
 //     return view('login');
 // });
 
-Route::get('/',   [HomeController::class , 'index'] )->name('alarmas');
+Route::get('/',   [HomeController::class , 'index'] )->middleware(['auth'])->name('home');
 
-Route::get('/equipos',   [EquipoController::class , 'index'] )->name('equipos');
+Route::get('/equipos',   [EquipoController::class , 'index'] )->middleware(['auth'])->name('equipos');
 
-Route::get('/bitacoras',   [BitacoraController::class , 'index'] )->name('bitacoras');
+Route::get('/bitacoras',   [BitacoraController::class , 'index'] )->middleware(['auth'])->name('bitacoras');
+
+Route::resource('/users', UserController::class)->middleware(['auth'])
+    ->names('users');
+
+
+Route::resource('/servicios', ServiciosController::class)->middleware(['auth'])
+    ->names('servicios');
 
 
 
 
-Route::get('/index', function () {
-    return view('index');
-})->name('index');
+// Route::get('/index', function () {
+//     return view('index');
+// })->name('index');
 
 Route::get('/alarmas', function () {
     return view('alarmas');
-})->name('alarmas');
+})->middleware(['auth'])->name('alarmas');
 
+require __DIR__ . '/auth.php';

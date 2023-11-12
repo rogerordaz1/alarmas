@@ -10,6 +10,12 @@ class Servicios extends Model
     use HasFactory;
     //?Aqui falta lo de las variables que se puedan modificar
 
+
+    protected $fillable = [
+        'nombre',
+        'activo'
+    ];
+
     public function equipos()
     //? Aqui si no funciona hay que ver para poner el nomnbre de las id de la relavcion.
     {

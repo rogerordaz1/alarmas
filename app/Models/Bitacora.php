@@ -25,5 +25,9 @@ class Bitacora extends Model
     {
         return $this->belongsTo(Servicios::class, 'id_servicio', 'id');
     }
+    public function user()
+    {
+        return $this->belongsTo(Servicios::class, 'id_user', 'id');
+    }
 
 }
