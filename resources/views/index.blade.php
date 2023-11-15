@@ -19,6 +19,7 @@
                         <div class="card mb-4" style="--cui-card-cap-bg: #3b5998">
                             <div class="card-header position-relative d-flex justify-content-center align-items-center">
                                 <svg class="icon icon-3xl text-white my-4">
+                                   
                                     <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-airplay"></use>
                                 </svg>
                                 <div class="chart-wrapper position-absolute top-0 start-0 w-100 h-100">
