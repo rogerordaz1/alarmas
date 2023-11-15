@@ -1,7 +1,7 @@
 {{-- Navbar --}}
 <div class="sidebar sidebar-dark sidebar-fixed" id="sidebar">
     <div class="sidebar-brand d-none d-md-flex">
-        ETECSA PR
+        Gestor de Alarmas
         <svg class="sidebar-brand-narrow" width="46" height="46" alt="CoreUI Logo">
             <use xlink:href="{{ asset('assets/brand/coreui.svg#signet') }} "></use>
         </svg>
@@ -10,7 +10,7 @@
         <li class="nav-item">
             <a class="nav-link {{ request()->is('/') ? 'active' : '' }}" href="{{ route('home') }}">
                 <svg class="nav-icon">
-                    <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-speedometer') }} "></use>
+                    <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-chart-pie') }} "></use>
                 </svg>Panel de Control</a>
         </li>
         <li class="nav-item {{ request()->is('/alarmas') ? 'active' : '' }}"><a class="nav-link"
