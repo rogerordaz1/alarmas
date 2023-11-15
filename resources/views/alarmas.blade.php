@@ -106,29 +106,32 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach ($bitacoras as $bitacora )
+
+
                             <tr class="align-middle">
                                 <td class="text-center">
                                     <div class="fw-semibold">
                                         <svg class="icon text-danger">
-                                            <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-asterisk-circle">
+                                            <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-asterisk-circle') }}">
                                             </use>
                                         </svg>
                                     </div>
                                 </td>
                                 <td>
-                                    <div>ServerWeb</div>
+                                    <div>{{ $bitacora->equipo->nombre }}</div>
                                 </td>
                                 <td>
-                                    <div>WWW, PING</div>
+                                    <div>{{ $bitacora->servicio->nombre }}</div>
                                 </td>
                                 <td>
-                                    <div>2023-09-04 08:32:15</div>
+                                    <div>{{ $bitacora->fecha_inicio }}</div>
                                 </td>
                                 <td>
-                                    <div>. . .</div>
+                                    <div>{{ $bitacora->fecha_final }}</div>
                                 </td>
                                 <td>
-                                    <div class="fw-semibold">. . .</div>
+                                    <div class="fw-semibold">{{ $bitacora->respuesta }}</div>
                                 </td>
                                 <td>
                                     <a href="" class="">
@@ -139,7 +142,10 @@
                                     </a>
                                 </td>
                             </tr>
-                            <tr class="align-middle">
+  @endforeach
+
+
+                            {{-- <tr class="align-middle">
                                 <td class="text-center">
                                     <div class="fw-semibold">
                                         <svg class="icon text-danger">
@@ -1096,7 +1102,7 @@
                                         </svg>
                                     </a>
                                 </td>
-                            </tr>
+                            </tr> --}}
 
                         </tbody>
 
@@ -1107,28 +1113,7 @@
 
 
 
-                <div class="modal fade" id="exampleModalCenter" tabindex="-1"
-                    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
-                                <button class="btn-close" type="button" data-coreui-dismiss="modal"
-                                    aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <p>Placeholder text for this demonstration of a vertically centered modal dialog.</p>
-                            </div>
-                            <div class="modal-footer">
-                                <button class="btn btn-secondary" type="button"
-                                    data-coreui-dismiss="modal">Close</button>
-                                <button class="btn btn-primary" type="button">Save changes</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <button class="btn btn-primary" type="button" data-coreui-toggle="modal"
-                    data-coreui-target="#exampleModalCenter">Vertically centered modal</button>
+               
             </div>
         </div>
     </div>

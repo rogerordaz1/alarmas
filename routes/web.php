@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AlarmasController;
 use App\Http\Controllers\BitacoraController;
 use App\Http\Controllers\EquipoController;
 use App\Http\Controllers\HomeController;
@@ -38,6 +39,9 @@ Route::resource('/servicios', ServiciosController::class)->middleware(['auth'])
 Route::resource('/equipos', EquipoController::class)->middleware(['auth'])
     ->names('equipos');
 
+Route::resource('/alarmas', AlarmasController::class)->middleware(['auth'])
+    ->names('alarmas');
+
 
 
 
@@ -45,8 +49,6 @@ Route::resource('/equipos', EquipoController::class)->middleware(['auth'])
 //     return view('index');
 // })->name('index');
 
-Route::get('/alarmas', function () {
-    return view('alarmas');
-})->middleware(['auth'])->name('alarmas');
+
 
 require __DIR__ . '/auth.php';
