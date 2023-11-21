@@ -14,6 +14,7 @@ class HomeController extends Controller
     public function index()
     {
         $users = User::all();
+        $alarmas = Bitacora::all();
         $servicesCount = Servicios::all()->count();
         $servicesDowm = Servicios::where('activo', '=', false)->get()->count();
         $servicesUp = Servicios::where('activo', '=', true)->get()->count();
@@ -55,7 +56,8 @@ class HomeController extends Controller
             'equiposDowm' => $equiposDowm,
             'equiposUpPercent' => $equiposUpPercent,
             'equiposUp' => $equiposUp,
-            'resultados' => $resultados
+            'resultados' => $resultados,
+            'alarmas' => $alarmas
         ]);
     }
 }

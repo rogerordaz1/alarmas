@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+
+
 @section('body')
     @include('componentes.navbar')
 
@@ -17,7 +19,8 @@
                 <div class="row">
                     <div class="col-sm-6 col-lg-4">
                         <div class="card mb-4" style="--cui-card-cap-bg: #3b5998">
-                            <div class="card-header position-relative d-flex justify-content-center align-items-center flex-column">
+                            <div
+                                class="card-header position-relative d-flex justify-content-center align-items-center flex-column">
                                 <svg class="icon icon-3xl text-white my-4">
                                     <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-airplay"></use>
                                 </svg>
@@ -47,7 +50,8 @@
                     <!-- /.col-->
                     <div class="col-sm-6 col-lg-4">
                         <div class="card mb-4" style="--cui-card-cap-bg: #00aced">
-                            <div class="card-header position-relative d-flex justify-content-center align-items-center flex-column">
+                            <div
+                                class="card-header position-relative d-flex justify-content-center align-items-center flex-column">
                                 <svg class="icon icon-3xl text-white my-4">
                                     <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-settings"></use>
                                 </svg>
@@ -77,7 +81,8 @@
                     <!-- /.col-->
                     <div class="col-sm-6 col-lg-4">
                         <div class="card mb-4" style="--cui-card-cap-bg: #4875b4">
-                            <div class="card-header position-relative d-flex justify-content-center align-items-center flex-column">
+                            <div
+                                class="card-header position-relative d-flex justify-content-center align-items-center flex-column">
                                 <svg class="icon icon-3xl text-white my-4">
                                     <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-notes"></use>
                                 </svg>
@@ -121,7 +126,7 @@
                                 </th>
                                 <th width="25%">User</th>
 
-                                <th width="40%">Usage</th>
+                                {{-- <th width="40%">Usage</th> --}}
 
                                 <th width="5%"> &nbsp;</th>
 
@@ -144,7 +149,7 @@
                                             Administrador de Red</div>
                                     </td>
 
-                                    <td>
+                                    {{-- <td>
                                         <div class="clearfix">
                                             <div class="float-start">
                                                 <div class="fw-semibold">100%</div>
@@ -155,14 +160,14 @@
                                             <div class="progress-bar bg-success" role="progressbar" style="width: 1000%"
                                                 aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
                                         </div>
-                                    </td>
+                                    </td> --}}
                                     <td></td>
 
                                     <td>
                                         <div class="small text-medium-emphasis">Tiempo de Respuesta</div>
                                         <div class="fw-semibold">
 
-                                            {{$resultados[$index]}} min
+                                            {{ $resultados[$index] }} min
                                         </div>
                                     </td>
                                 </tr>
@@ -235,67 +240,24 @@
                 </div>
 
                 <div class="row mt-5">
-                    <div class="col-sm-6 col-lg-3">
-                        <div class="card mb-4 text-white bg-danger">
-                            <div class="card-body pb-0 d-flex justify-content-between align-items-start">
-                                <div>
-                                    <div class="fs-4">Servidor Web</div>
-                                    <div>PING : 40d</div>
-                                    <div>WWW: Down 125ms</div>
+                    @foreach ($alarmas as $key => $item)
+                        @if ($key < 4)
+                            <div class="col-sm-6 col-lg-3">
+                                <div class="card mb-4 text-white {{ $item->estado->estado == 'Buen' ? 'bg-primary': 'bg-danger' }}">
+                                    <div class="card-body pb-0 d-flex justify-content-between align-items-start">
+                                        <div>
+                                            <div class="fs-4"> Host: {{ $item->equipo->nombre }}</div>
+                                            <div>Servicio : {{ $item->equipo->nombre }}</div>
+                                            <div>Respuesta: {{ $item->respuesta }}</div>
+                                        </div>
+                                    </div>
+                                    <div class="c-chart-wrapper mt-3 mx-3" style="height:70px;">
+
+                                    </div>
                                 </div>
-
                             </div>
-                            <div class="c-chart-wrapper mt-3 mx-3" style="height:70px;">
-
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /.col-->
-                    <div class="col-sm-6 col-lg-3">
-                        <div class="card mb-4 text-white bg-info">
-                            <div class="card-body pb-0 d-flex justify-content-between align-items-start">
-                                <div>
-                                    <div class="fs-4">Servidor Web</div>
-                                    <div>PING : 40d</div>
-                                    <div>WWW: Down 125ms</div>
-                                </div>
-
-                            </div>
-                            <div class="c-chart-wrapper mt-3 mx-3" style="height:70px;">
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-lg-3">
-                        <div class="card mb-4 text-white bg-info">
-                            <div class="card-body pb-0 d-flex justify-content-between align-items-start">
-                                <div>
-                                    <div class="fs-4">Servidor Web</div>
-                                    <div>PING : 40d</div>
-                                    <div>WWW: Down 125ms</div>
-                                </div>
-
-                            </div>
-                            <div class="c-chart-wrapper mt-3 mx-3" style="height:70px;">
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-lg-3">
-                        <div class="card mb-4 text-white bg-info">
-                            <div class="card-body pb-0 d-flex justify-content-between align-items-start">
-                                <div>
-                                    <div class="fs-4">Servidor Web</div>
-                                    <div>PING : 40d</div>
-                                    <div>WWW: Down 125ms</div>
-                                </div>
-
-                            </div>
-                            <div class="c-chart-wrapper mt-3 mx-3" style="height:70px;">
-
-                            </div>
-                        </div>
-                    </div>
+                        @endif
+                    @endforeach
                 </div>
 
 

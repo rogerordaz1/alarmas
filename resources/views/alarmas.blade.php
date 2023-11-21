@@ -64,6 +64,7 @@
     <script src="{{ asset('assets/datatable/jszip.min.js') }}" crossorigin="anonymous"></script>
 
 </head>
+
 <body>
 
     @include('componentes.navbar')
@@ -102,11 +103,20 @@
                                 <tr class="align-middle">
                                     <td class="text-center">
                                         <div class="fw-semibold">
-                                            <svg class="icon text-danger">
-                                                <use
-                                                    xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-asterisk-circle') }}">
-                                                </use>
-                                            </svg>
+                                            @if ($bitacora->estado->estado == 'Buen')
+                                                <svg class="icon text-success">
+                                                    <use
+                                                        xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-check-circle') }}">
+                                                    </use>
+                                                </svg>
+                                            @else
+                                                <svg class="icon text-danger">
+                                                    <use
+                                                        xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-asterisk-circle') }}">
+                                                    </use>
+                                                </svg>
+                                            @endif
+
                                         </div>
                                     </td>
                                     <td>
@@ -125,7 +135,7 @@
                                         <div class="fw-semibold">{{ $bitacora->respuesta }}</div>
                                     </td>
                                     <td>
-                                        <a href="{{ route('alarmas.edit' , $bitacora->id) }}">
+                                        <a href="{{ route('alarmas.edit', $bitacora->id) }}">
                                             <svg class="icon text-dark">
                                                 <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-options">
                                                 </use>
@@ -183,9 +193,6 @@
                     },
                 },
             ],
-        }
-        );
-
-
+        });
     </script>
 </body>
