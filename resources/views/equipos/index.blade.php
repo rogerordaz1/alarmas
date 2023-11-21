@@ -12,6 +12,17 @@
             <div class="container-lg">
                 <h1 class="display-3">Equipos</h1>
                 <div class="card-header">
+                    @if (session('success'))
+                        <div class="alert alert-success">
+                            {{ session('success') }}
+                        </div>
+                    @endif
+
+                    @if (session('error'))
+                        <div class="alert alert-danger">
+                            {{ session('error') }}
+                        </div>
+                    @endif
 
                     <div class="d-flex justify-content-end mb-3">
                         <button class="btn btn-primary" id="add" type="button">Agregar</button>

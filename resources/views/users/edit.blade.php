@@ -42,6 +42,21 @@
                             <input type="password" name="password" id="password" class="form-control" placeholder="Ingrese la nueva contraseña">
                         </div>
 
+                        <label for="role_id">Roles</label>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <label class="input-group-text" for="role_id">Roles</label>
+                            </div>
+                            <select name="role_id" class="custom-select" id="role_id">
+
+                                @foreach ($roles as $role)
+
+                                <option  value="{{ $role->id }}">{{ $role->name }}</option>
+
+                                @endforeach
+                            </select>
+                        </div>
+
 
                         <button type="submit" class="btn btn-primary btn-sm">Editar</button>
                         <a href="{{ route('users.index') }}"  class="btn btn-secondary btn-sm">Cancelar</a>

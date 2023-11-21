@@ -16,9 +16,9 @@ class CreateEquiposServiciosTable extends Migration
         Schema::create('equipos_servicios', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('id_equipo');
-            $table->foreign('id_equipo')->references('id')->on('equipos');
+            $table->foreign('id_equipo')->references('id')->on('equipos')->onDelete('cascade');
             $table->unsignedBigInteger('id_servicio');
-            $table->foreign('id_servicio')->references('id')->on('servicios');
+            $table->foreign('id_servicio')->references('id')->on('servicios')->onDelete('cascade');
             $table->timestamps();
         });
     }

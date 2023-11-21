@@ -1,56 +1,45 @@
 @extends('layouts.app')
 
 @section('body')
-    @include('componentes.navbar')
+@include('componentes.navbar')
 
-    <div class="wrapper d-flex flex-column min-vh-100 bg-light">
-        @include('componentes.header')
+<div class="wrapper d-flex flex-column min-vh-100 bg-light">
+    @include('componentes.header')
 
-       
-        <div class="row">
-            <div class="col-md-3"></div>
-            <div class="col-md-6">
-                <div class="card card-primary">
-                    <div class="card-header">
-                        <h3 class="card-title">Crear Servicio</h3>
-                    </div>
-                    <div class="card-body">
-                        <form class="pb-5" action="{{ route('servicios.store') }}" method="post">
-                            @csrf
-
-                            <div class="form-group">
-                                <label for="name">Nombre</label>
-                                <select name="name" class="custom-select" id="name">
-
-                                    <option value="PING">PING</option>
-                                    <option value="Current Load">Current Load</option>
-                                    <option value="Current Users">Current Users</option>
-                                    <option value="HTTP">HTTP</option>
-                                    <option value="Root Partition">Root Partition</option>
-                                    <option value="SSH">SSH</option>
-                                    <option value="Swap Usage">Swap Usage</option>
-                                    <option value="Total Processes">Total Processes</option>
-                                    <option value="PostgreSQL">PostgreSQL</option>
-                                    <option value="DNS">DNS</option>
-                                    <option value="LDAP">LDAP</option>
-                                    <option value="FTP">FTP</option>
-                                    <option value="WWW">WWW</option>
-                                    <option value="WSUS">WSUS</option>
-
-                                </select>
-                            </div>
-
-                            <button type="submit" class="btn btn-primary btn-sm">Crear</button>
-                            <a href="{{ route('servicios.index') }}" type="submit"
-                                class="btn btn-secondary btn-sm">Cancelar</a>
-
-                        </form>
-                    </div>
-
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <div class="card card-primary">
+                <div class="card-header">
+                    <h3 class="card-title">Editar Alarma</h3>
                 </div>
+                <div class="card-body">
+                    <form class="pb-5" action="{{ route('alarmas.update' , $alarma) }}" method="post">
+                        @csrf
+                        @method('PUT')
+
+                        <div class="form-group">
+                            <label for="respuesta">Respuesta</label>
+                            <input type="text"
+                            class="form-control"
+                            name="respuesta"
+                            id="respuesta"
+                            value="{{ $alarma->respuesta ?? '' }}"
+                            placeholder="Cambie la Respuesta">
+
+                        </div>
+
+
+                        <button type="submit" class="btn btn-primary btn-sm">Editar</button>
+                        <a href="{{ route('alarmas.index') }}"  class="btn btn-secondary btn-sm">Cancelar</a>
+
+                    </form>
+                </div>
+
             </div>
-            <div class="col-md-3"></div>
         </div>
+        <div class="col-md-3"></div>
+    </div>
     </div>
 @endsection
 
@@ -85,22 +74,21 @@
 
 
     <link href="{{ asset('assets/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" crossorigin="anonymous" />
-    <link href="{{ asset('assets/datatable/dataTables.bootstrap4.min.css') }}" rel="stylesheet"
-        crossorigin="anonymous" />
+    <link href="{{ asset('assets/datatable/dataTables.bootstrap4.min.css') }}" rel="stylesheet" crossorigin="anonymous" />
     <link href="{{ asset('assets/datatable/select.bootstrap4.min.css') }}" rel="stylesheet" crossorigin="anonymous" />
     <link href="{{ asset('assets/datatable/buttons.bootstrap4.min.css') }}" rel="stylesheet" crossorigin="anonymous" />
 @endsection
 
 @section('js')
-    <script src="{{ asset('vendors/@coreui/coreui/js/coreui.bundle.min.js') }}"></script>
-    <script src="{{ asset('vendors/simplebar/js/simplebar.min.js') }}"></script>
-    <!-- Plugins and scripts required by this view-->
-    <script src="{{ asset('vendors/chart.js/js/chart.min.js') }}"></script>
-    <script src="{{ asset('vendors/@coreui/chartjs/js/coreui-chartjs.js') }}"></script>
-    <script src="{{ asset('vendors/@coreui/utils/js/coreui-utils.js') }}"></script>
-    <script src="{{ asset('js/main.js') }}"></script>
 
 
+<script src="{{ asset('vendors/@coreui/coreui/js/coreui.bundle.min.js') }}"></script>
+<script src="{{ asset('vendors/simplebar/js/simplebar.min.js') }}"></script>
+<!-- Plugins and scripts required by this view-->
+<script src="{{ asset('vendors/chart.js/js/chart.min.js') }}"></script>
+<script src="{{ asset('vendors/@coreui/chartjs/js/coreui-chartjs.js') }}"></script>
+<script src="{{ asset('vendors/@coreui/utils/js/coreui-utils.js') }}"></script>
+<script src="{{ asset('js/main.js') }}"></script>
     <script src="{{ asset('assets/font-awesome/all.min.js') }}" crossorigin="anonymous"></script>
     <script src="{{ asset('assets/jquery/jquery.js') }}"></script>
     <script src="{{ asset('assets/popper/popper.js') }}"></script>
@@ -120,4 +108,13 @@
     <script src="{{ asset('vendors/@coreui/chartjs/js/coreui-chartjs.js') }}"></script>
     <script src="{{ asset('vendors/@coreui/utils/js/coreui-utils.js') }}"></script>
     <script src="{{ asset('js/main.js') }}"></script>
+
+
+
 @endsection
+
+
+
+
+
+

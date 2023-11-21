@@ -17,10 +17,11 @@
                 <div class="row">
                     <div class="col-sm-6 col-lg-4">
                         <div class="card mb-4" style="--cui-card-cap-bg: #3b5998">
-                            <div class="card-header position-relative d-flex justify-content-center align-items-center">
+                            <div class="card-header position-relative d-flex justify-content-center align-items-center flex-column">
                                 <svg class="icon icon-3xl text-white my-4">
                                     <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-airplay"></use>
                                 </svg>
+                                <p class="d-block text-white">Equipos</p>
                                 <div class="chart-wrapper position-absolute top-0 start-0 w-100 h-100">
                                     <canvas id="social-box-chart-1" height="90"></canvas>
                                 </div>
@@ -46,10 +47,11 @@
                     <!-- /.col-->
                     <div class="col-sm-6 col-lg-4">
                         <div class="card mb-4" style="--cui-card-cap-bg: #00aced">
-                            <div class="card-header position-relative d-flex justify-content-center align-items-center">
+                            <div class="card-header position-relative d-flex justify-content-center align-items-center flex-column">
                                 <svg class="icon icon-3xl text-white my-4">
                                     <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-settings"></use>
                                 </svg>
+                                <p class="d-block text-white">Servicios</p>
                                 <div class="chart-wrapper position-absolute top-0 start-0 w-100 h-100">
                                     <canvas id="social-box-chart-2" height="90"></canvas>
                                 </div>
@@ -75,10 +77,11 @@
                     <!-- /.col-->
                     <div class="col-sm-6 col-lg-4">
                         <div class="card mb-4" style="--cui-card-cap-bg: #4875b4">
-                            <div class="card-header position-relative d-flex justify-content-center align-items-center">
+                            <div class="card-header position-relative d-flex justify-content-center align-items-center flex-column">
                                 <svg class="icon icon-3xl text-white my-4">
                                     <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-notes"></use>
                                 </svg>
+                                <p class="d-block text-white">Reportes</p>
                                 <div class="chart-wrapper position-absolute top-0 start-0 w-100 h-100">
                                     <canvas id="social-box-chart-3" height="90"></canvas>
                                 </div>

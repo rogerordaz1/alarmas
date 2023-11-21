@@ -12,6 +12,17 @@
             <div class="container-lg">
                 <h1 class="display-3">Servicios</h1>
                 <div class="card-header">
+                    @if (session('success'))
+                        <div class="alert alert-success">
+                            {{ session('success') }}
+                        </div>
+                    @endif
+
+                    @if (session('error'))
+                        <div class="alert alert-danger">
+                            {{ session('error') }}
+                        </div>
+                    @endif
 
                     <div class="d-flex justify-content-end mb-3">
                         <button class="btn btn-primary" id="add" type="button">Agregar</button>
@@ -106,33 +117,32 @@
 
 
 @section('css')
-<link rel="stylesheet" href="{{ asset('vendors/simplebar/css/simplebar.css') }}">
-<link rel="stylesheet" href="{{ asset('css/vendors/simplebar.css') }}">
-<!-- Main styles for this application-->
-<link href="{{ asset('css/style.css') }}" rel="stylesheet">
-<!-- We use those styles to show code examples, you should remove them in your application.-->
-<link href="{{ asset('css/examples.css') }}" rel="stylesheet">
-<link href="{{ asset('vendors/@coreui/chartjs/css/coreui-chartjs.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('vendors/simplebar/css/simplebar.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/vendors/simplebar.css') }}">
+    <!-- Main styles for this application-->
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    <!-- We use those styles to show code examples, you should remove them in your application.-->
+    <link href="{{ asset('css/examples.css') }}" rel="stylesheet">
+    <link href="{{ asset('vendors/@coreui/chartjs/css/coreui-chartjs.css') }}" rel="stylesheet">
 
 
-<link href="{{ asset('assets/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" crossorigin="anonymous" />
-<link href="{{ asset('assets/datatable/dataTables.bootstrap4.min.css') }}" rel="stylesheet"
-    crossorigin="anonymous" />
-<link href="{{ asset('assets/datatable/select.bootstrap4.min.css') }}" rel="stylesheet" crossorigin="anonymous" />
-<link href="{{ asset('assets/datatable/buttons.bootstrap4.min.css') }}" rel="stylesheet" crossorigin="anonymous" />
+    <link href="{{ asset('assets/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" crossorigin="anonymous" />
+    <link href="{{ asset('assets/datatable/dataTables.bootstrap4.min.css') }}" rel="stylesheet" crossorigin="anonymous" />
+    <link href="{{ asset('assets/datatable/select.bootstrap4.min.css') }}" rel="stylesheet" crossorigin="anonymous" />
+    <link href="{{ asset('assets/datatable/buttons.bootstrap4.min.css') }}" rel="stylesheet" crossorigin="anonymous" />
 
-<script src="{{ asset('assets/font-awesome/all.min.js') }}" crossorigin="anonymous"></script>
-<script src="{{ asset('assets/jquery/jquery.js') }}"></script>
-<script src="{{ asset('assets/popper/popper.js') }}"></script>
-<script src="{{ asset('assets/bootstrap/js/bootstrap.min.js') }}" crossorigin="anonymous"></script>
+    <script src="{{ asset('assets/font-awesome/all.min.js') }}" crossorigin="anonymous"></script>
+    <script src="{{ asset('assets/jquery/jquery.js') }}"></script>
+    <script src="{{ asset('assets/popper/popper.js') }}"></script>
+    <script src="{{ asset('assets/bootstrap/js/bootstrap.min.js') }}" crossorigin="anonymous"></script>
 
-<script src="{{ asset('assets/datatable/jquery.dataTables.min.js') }}" crossorigin="anonymous"></script>
-<script src="{{ asset('assets/datatable/dataTables.bootstrap4.min.js') }}" crossorigin="anonymous"></script>
-<script src="{{ asset('assets/datatable/dataTables.select.min.js') }}" crossorigin="anonymous"></script>
-<script src="{{ asset('assets/datatable/dataTables.buttons.min.js') }}" crossorigin="anonymous"></script>
-<script src="{{ asset('assets/datatable/buttons.bootstrap4.min.js') }}" crossorigin="anonymous"></script>
-<script src="{{ asset('assets/datatable/dataTables.buttons.html5.min.js') }}" crossorigin="anonymous"></script>
-<script src="{{ asset('assets/datatable/jszip.min.js') }}" crossorigin="anonymous"></script>
+    <script src="{{ asset('assets/datatable/jquery.dataTables.min.js') }}" crossorigin="anonymous"></script>
+    <script src="{{ asset('assets/datatable/dataTables.bootstrap4.min.js') }}" crossorigin="anonymous"></script>
+    <script src="{{ asset('assets/datatable/dataTables.select.min.js') }}" crossorigin="anonymous"></script>
+    <script src="{{ asset('assets/datatable/dataTables.buttons.min.js') }}" crossorigin="anonymous"></script>
+    <script src="{{ asset('assets/datatable/buttons.bootstrap4.min.js') }}" crossorigin="anonymous"></script>
+    <script src="{{ asset('assets/datatable/dataTables.buttons.html5.min.js') }}" crossorigin="anonymous"></script>
+    <script src="{{ asset('assets/datatable/jszip.min.js') }}" crossorigin="anonymous"></script>
 
 
     <link rel="apple-touch-icon" sizes="57x57" href="{{ asset('assets/favicon/apple-icon-57x57.png') }}">
@@ -144,7 +154,8 @@
     <link rel="apple-touch-icon" sizes="144x144" href="{{ asset('assets/favicon/apple-icon-144x144.png') }}">
     <link rel="apple-touch-icon" sizes="152x152" href="{{ asset('assets/favicon/apple-icon-152x152.png') }}">
     <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('assets/favicon/apple-icon-180x180.png') }}">
-    <link rel="icon" type="image/png" sizes="192x192" href="{{ asset('assets/favicon/android-icon-192x192.png') }}">
+    <link rel="icon" type="image/png" sizes="192x192"
+        href="{{ asset('assets/favicon/android-icon-192x192.png') }}">
     <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('assets/favicon/favicon-32x32.png') }}">
     <link rel="icon" type="image/png" sizes="96x96" href="{{ asset('assets/favicon/favicon-96x96.png') }}">
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('assets/favicon/favicon-16x16.png') }}">
@@ -178,13 +189,13 @@
             window.location.href = "{{ route('servicios.create') }}";
         })
     </script>
- <script src="{{ asset('vendors/@coreui/coreui/js/coreui.bundle.min.js') }}"></script>
- <script src="{{ asset('vendors/simplebar/js/simplebar.min.js') }}"></script>
- <!-- Plugins and scripts required by this view-->
- <script src="{{ asset('vendors/chart.js/js/chart.min.js') }}"></script>
- <script src="{{ asset('vendors/@coreui/chartjs/js/coreui-chartjs.js') }}"></script>
- <script src="{{ asset('vendors/@coreui/utils/js/coreui-utils.js') }}"></script>
- <script src="{{ asset('js/main.js') }}"></script>
+    <script src="{{ asset('vendors/@coreui/coreui/js/coreui.bundle.min.js') }}"></script>
+    <script src="{{ asset('vendors/simplebar/js/simplebar.min.js') }}"></script>
+    <!-- Plugins and scripts required by this view-->
+    <script src="{{ asset('vendors/chart.js/js/chart.min.js') }}"></script>
+    <script src="{{ asset('vendors/@coreui/chartjs/js/coreui-chartjs.js') }}"></script>
+    <script src="{{ asset('vendors/@coreui/utils/js/coreui-utils.js') }}"></script>
+    <script src="{{ asset('js/main.js') }}"></script>
 
 
 
@@ -210,5 +221,4 @@
     <script type="text/javascript">
         $('#servicios').dataTable();
     </script>
-
 @endsection

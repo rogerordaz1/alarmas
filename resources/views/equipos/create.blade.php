@@ -19,8 +19,13 @@
 
                         <div class="form-group">
                             <label for="name">Nombre</label>
-                            <input type="text" class="form-control" name="name" id="name"
-                                placeholder="Entra el Nombre">
+                            {{-- Necesito un dropDown con los nomnres de los equios --}}
+                            <select name="name" class="custom-select" id="name">
+                                @foreach ($equipos as $equipo)
+                                    <option value="{{ $equipo }}">{{ $equipo }}</option>
+                                @endforeach
+                            </select>
+
                         </div>
 
                         <button type="submit" class="btn btn-primary btn-sm">Crear</button>
