@@ -94,6 +94,7 @@
                                 <th width="15%">Inicio</th>
                                 <th width="15%">Final</th>
                                 <th width="15%">Respuesta</th>
+                                <th width="15%">Estado</th>
                                 <th width="10%"></th>
 
                             </tr>
@@ -103,7 +104,7 @@
                                 <tr class="align-middle">
                                     <td class="text-center">
                                         <div class="fw-semibold">
-                                            @if ($bitacora->estado->estado == 'Buen')
+                                            @if ($bitacora->estado->estado == 'Bien')
                                                 <svg class="icon text-success">
                                                     <use
                                                         xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-check-circle') }}">
@@ -133,6 +134,9 @@
                                     </td>
                                     <td>
                                         <div class="fw-semibold">{{ $bitacora->respuesta }}</div>
+                                    </td>
+                                    <td>
+                                        <div class="fw-semibold">{{ $bitacora->estado->estado }}</div>
                                     </td>
                                     <td>
                                         <a href="{{ route('alarmas.edit', $bitacora->id) }}">
@@ -186,8 +190,8 @@
 
                 {
                     extend: 'excel',
-                    text: 'Exel',
-                    titleAttr: 'Exportar a EXEL',
+                    text: 'Excel',
+                    titleAttr: 'Exportar a EXCEL',
                     exportOptions: {
                         columns: [1, 2, 3, 4, 5]
                     },

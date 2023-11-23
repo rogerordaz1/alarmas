@@ -34,7 +34,7 @@
                         <thead class="table-light fw-semibold">
                             <tr class="align-middle">
 
-                                <th width="20%">Id</th>
+                                
                                 <th width="20%">Nombre</th>
                                 <th width="20%">Activo</th>
                                 <th width="20%">Utilidad</th>
@@ -45,9 +45,7 @@
                             @foreach ($servicios as $servicio)
                                 <tr class="align-middle">
 
-                                    <td>
-                                        <div>{{ $servicio->id }}</div>
-                                    </td>
+
                                     <td>
                                         <div>{{ $servicio->nombre }}</div>
                                     </td>

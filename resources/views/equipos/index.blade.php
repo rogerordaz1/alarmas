@@ -34,7 +34,7 @@
                         <thead class="table-light fw-semibold">
                             <tr class="align-middle">
 
-                                <th width="20%">Id</th>
+
                                 <th width="20%">Nombre</th>
                                 <th width="20%">Activo</th>
                                 <th width="20%">Utilidad</th>
@@ -45,9 +45,7 @@
                             @foreach ($equipos as $equipo)
                                 <tr class="align-middle">
 
-                                    <td>
-                                        <div>{{ $equipo->id }}</div>
-                                    </td>
+
                                     <td>
                                         <div>{{ $equipo->nombre }}</div>
                                     </td>
@@ -222,7 +220,23 @@
     <script src="{{ asset('vendors/@coreui/utils/js/coreui-utils.js') }}"></script>
     <script src="{{ asset('js/main.js') }}"></script>
     <script type="text/javascript">
-        $('#servicios').dataTable();
+        // $('#servicios').dataTable();
+        let table = $('#servicios').dataTable({
+            dom: "B<'row'<'col-sm-12 col-md-6'l><'col-sm-12 col-md-6'f>>" +
+                "<'row'<'col-sm-12'tr>>" + "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
+            responsive: true,
+            autoWidth: false,
+            buttons: [
+                {
+                    extend: 'excel',
+                    text: 'Excel',
+                    titleAttr: 'Exportar a EXCEL',
+                    exportOptions: {
+                        columns: [0,1, 2]
+                    },
+                },
+            ],
+        });
     </script>
 
 @endsection

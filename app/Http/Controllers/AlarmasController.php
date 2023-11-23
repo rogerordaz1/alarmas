@@ -10,7 +10,8 @@ class AlarmasController extends Controller
 
     public function index()
     {
-        $bitacoras = Bitacora::all();
+        $bitacoras = Bitacora::orderBy('fecha_inicio', 'desc')->get();
+       // $bitacoras = Bitacora::all();
 
         return view("alarmas" , [
             'bitacoras' => $bitacoras

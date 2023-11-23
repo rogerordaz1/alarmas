@@ -23,7 +23,7 @@
                         <thead class="table-light fw-semibold">
                             <tr class="align-middle">
 
-                                <th width="20%">Id</th>
+
                                 <th width="20%">Nombre</th>
                                 <th width="20%">Email</th>
                                 <th width="20%">Utilidad</th>
@@ -34,9 +34,7 @@
                             @foreach ($users as $user)
                                 <tr class="align-middle">
 
-                                    <td>
-                                        <div>{{ $user->id }}</div>
-                                    </td>
+
                                     <td>
                                         <div>{{ $user->name }}</div>
                                     </td>
