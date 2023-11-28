@@ -14,7 +14,7 @@ class HomeController extends Controller
     public function index()
     {
         $users = User::all();
-        $alarmas = Bitacora::all();
+        $alarmas = Bitacora::orderBy('fecha_inicio', 'desc')->get();
 
         // $alarmasDown = Bitacora::where('activo', '=', false)->get()->count();
 

@@ -250,8 +250,6 @@
                         @endif
                     @endforeach
                 </div>
-
-
                 <!-- /.row-->
 
             </div>

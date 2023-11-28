@@ -83,19 +83,19 @@
                     <table class="table border mb-0" id="alarm_table_id">
                         <thead class="table-light fw-semibold">
                             <tr class="align-middle">
-                                <th class="text-center" width="5%">
+                                <th class="text-center">
                                     <svg class="icon">
                                         <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-asterisk-circle">
                                         </use>
                                     </svg>
                                 </th>
-                                <th width="20%">Host</th>
-                                <th width="20%">Servicio</th>
-                                <th width="15%">Inicio</th>
-                                <th width="15%">Final</th>
-                                <th width="15%">Respuesta</th>
-                                <th width="15%">Estado</th>
-                                <th width="10%"></th>
+                                <th >Host</th>
+                                <th>Servicio</th>
+                                <th>Inicio</th>
+                                <th>Final</th>
+                                <th>Respuesta</th>
+                                <th>Estado</th>
+                                <th></th>
 
                             </tr>
                         </thead>
@@ -154,6 +154,49 @@
 
                         </tbody>
 
+                        <tfoot class="table-light fw-semibold">
+                            <tr>
+                                <th ></th>
+                                <th >
+                                    <select data-column="1" class="form-select" id="filtro-equipo">
+                                        <option value="">Equipo</option>
+                                        @foreach ($bitacoras as $bitacora)
+                                            <option value="{{ $bitacora->equipo->nombre }}">
+                                                {{ $bitacora->equipo->nombre }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </th>
+                                <th >
+                                    <select data-column="1" class="form-select" id="filtro-servicio">
+                                        <option value="">Servicio</option>
+                                        @foreach ($bitacoras as $bitacora)
+                                            <option value="{{ $bitacora->servicio->nombre }}">
+                                                {{ $bitacora->servicio->nombre }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </th>
+                                <th ></th>
+                                <th ></th>
+                                <th >
+
+                                </th>
+                                <th >
+                                    <select data-column="1" class="form-select" id="filtro-estado">
+                                        <option value="">Estado</option>
+                                        @foreach ($bitacoras as $bitacora)
+                                            <option value="{{ $bitacora->estado->estado }}">
+                                                {{ $bitacora->estado->estado }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </th>
+                                <th></th>
+                            </tr>
+                        </tfoot>
+
+
                     </table>
                 </div>
 
@@ -172,31 +215,48 @@
     </footer>
     </div>
     <!-- CoreUI and necessary plugins-->
+
     <script src="{{ asset('vendors/@coreui/coreui/js/coreui.bundle.min.js') }}"></script>
     <script src="{{ asset('vendors/simplebar/js/simplebar.min.js') }}"></script>
     <!-- Plugins and scripts required by this view-->
-    <script src="{{ asset('vendors/chart.js/js/chart.min.js') }}"></script>
-    <script src="{{ asset('vendors/@coreui/chartjs/js/coreui-chartjs.js') }}"></script>
-    <script src="{{ asset('vendors/@coreui/utils/js/coreui-utils.js') }}"></script>
-    <script src="{{ asset('js/main.js') }}"></script>
-    <script></script>
-    <script type="text/javascript">
-        let table = $('#alarm_table_id').dataTable({
-            dom: "B<'row'<'col-sm-12 col-md-6'l><'col-sm-12 col-md-6'f>>" +
-                "<'row'<'col-sm-12'tr>>" + "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
-            responsive: true,
-            autoWidth: false,
-            buttons: [
 
-                {
-                    extend: 'excel',
-                    text: 'Excel',
-                    titleAttr: 'Exportar a EXCEL',
-                    exportOptions: {
-                        columns: [1, 2, 3, 4, 5]
+    <script src="{{ asset('js/main.js') }}"></script>
+
+
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            let table = $('#alarm_table_id').DataTable({
+                dom: "B<'row'<'col-sm-12 col-md-6'l><'col-sm-12 col-md-6'f>>" +
+                    "<'row'<'col-sm-12'tr>>" + "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
+                responsive: true,
+                autoWidth: false,
+                buttons: [
+
+                    {
+                        extend: 'excel',
+                        text: 'Excel',
+                        titleAttr: 'Exportar a EXCEL',
+                        exportOptions: {
+                            columns: [1, 2, 3, 4, 5]
+                        },
                     },
-                },
-            ],
+                ],
+            });
+
+            $('#filtro-equipo').on('change', function() {
+                var equipo = $(this).val();
+                table.columns(1).search(equipo).draw();
+            });
+            $('#filtro-servicio').on('change', function() {
+                var servicio = $(this).val();
+                table.columns(2).search(servicio).draw();
+            });
+            $('#filtro-estado').on('change', function() {
+                var estado = $(this).val();
+                table.columns(6).search(estado).draw();
+            });
+
         });
     </script>
 </body>
